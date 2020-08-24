@@ -4,7 +4,7 @@ import Chart from './components/Charts/Chart';
 import Cart from './components/Cards/Cart';
 import CountryPicker from './components/Countrypicker/CountryPicker';
 import { fetchdata } from './api';
-
+import { Container } from 'reactstrap';
 class App extends React.Component {
     state = {
         data: {},
@@ -21,12 +21,12 @@ class App extends React.Component {
     render() {
         const { data, country } = this.state;
         return (
-            <div className="App">
-                <h1>API Covid 19</h1>
+            <Container>
+                <h1 className="text-center">Home - page</h1>   
                 <Cart data={data} />
                 <CountryPicker getCountry={this.getCountry} />
                 <Chart data={data} country={country} />
-            </div>
+            </Container>
         );
     }
 }
