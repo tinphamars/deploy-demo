@@ -32,10 +32,10 @@ class App extends React.Component {
                         <Col xs={9}>
                             <h1 className="text-center">Home - page</h1>
                             <Cart data={data} />
-                            <div className="text-center">
+                            <Container className="text-center">
                                 <CountryPicker getCountry={this.getCountry} />
-                            </div>
-                            <Chart data={data} country={country} />
+                                <Chart data={data} country={country} />
+                            </Container>
                         </Col>
                     </Row>
                 </Container>
