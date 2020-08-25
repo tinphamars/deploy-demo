@@ -1,0 +1,12 @@
+.news_body {
+    width: 300px;
+    top: 2rem;
+    height: 800px;
+    max-height: 800px;
+    padding-left: 10px;
+    position: relative;
+    overflow: auto;
+}
+.news_body .card {
+    margin-bottom: 1rem;
+}
