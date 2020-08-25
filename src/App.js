@@ -27,7 +27,7 @@ class App extends React.Component {
                 <Container fluid>
                     <Row>
                         <Col xs={3}>
-                            <News />
+                            {/* <News /> */}
                         </Col>
                         <Col xs={9}>
                             <h1 className="text-center">Home - page</h1>
