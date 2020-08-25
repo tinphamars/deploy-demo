@@ -5,6 +5,7 @@ import Cart from './components/Cards/Cart';
 import CountryPicker from './components/Countrypicker/CountryPicker';
 import { fetchdata } from './api';
 import { Container } from 'reactstrap';
+
 class App extends React.Component {
     state = {
         data: {},
@@ -22,9 +23,11 @@ class App extends React.Component {
         const { data, country } = this.state;
         return (
             <Container>
-                <h1 className="text-center">Home - page</h1>   
+                <h1 className="text-center">Home - page</h1>
                 <Cart data={data} />
-                <CountryPicker getCountry={this.getCountry} />
+                <div className="text-center">
+                    <CountryPicker getCountry={this.getCountry} />
+                </div>
                 <Chart data={data} country={country} />
             </Container>
         );

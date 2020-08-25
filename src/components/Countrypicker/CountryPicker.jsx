@@ -14,6 +14,7 @@ function CountryPicker({ getCountry }) {
 
     return (
         <div className="country-container">
+            <h3 className="text-center">Select country</h3>
             <FormControl>
                 <NativeSelect onChange={(e) => getCountry(e.target.value)}>
                     <option value="">Global</option>
