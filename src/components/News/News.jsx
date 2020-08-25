@@ -15,7 +15,7 @@ const News = () => {
             {news.map((item, i) => (
                 <a href={item.url} target="_blank">
                     <Card key={i}>
-                        <img width="100%" src={item.urlToImage} alt={item.title} />
+                        <img width="100%" src={item.imageUrl} alt={item.title} />
                         <CardBody>
                             <CardTitle tag="h6">{item.title}</CardTitle>
                         </CardBody>
