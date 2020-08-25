@@ -4,7 +4,7 @@ const _url = 'http://newsapi.org/v2/everything?q=corona&from=2020-08-25&sortBy=p
 
 export const fetchnewsdata = async () => {
     try {
-        const { data } = await axios.get(_url);
+        const { data } = await axios.get(_url, { mode: "no-cors" });
         return data.articles;
     } catch (error) {
         console.log(error);
