@@ -1,45 +1,29 @@
 import React from 'react';
-import './App.css';
-import Chart from './components/Charts/Chart';
-import Cart from './components/Cards/Cart';
-import CountryPicker from './components/Countrypicker/CountryPicker';
-import { fetchdata } from './api';
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import News from './components/News/News';
+import Header from './components/Static/Header';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+import Home from './components/Home';
 
 class App extends React.Component {
-    state = {
-        data: {},
-        country: '',
-    }
-    async componentDidMount() {
-        const fetchdata1 = await fetchdata();
-        this.setState({ data: fetchdata1 });
-    }
-    getCountry = async (country) => {
-        const dataCountry = await fetchdata(country);
-        this.setState({ data: dataCountry, country: country });
-    }
+
     render() {
-        const { data, country } = this.state;
         return (
-            <div>
-                <Container fluid>
-                    <Row>
-                        <Col xs={3}>
-                            <News />
-                        </Col>
-                        <Col xs={9}>
-                            <h1 className="text-center">Home - page</h1>
-                            <Cart data={data} />
-                            <Container className="text-center">
-                                <CountryPicker getCountry={this.getCountry} />
-                                <Chart data={data} country={country} />
-                            </Container>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+            <Router>
+                <Header />
+                <Switch>
+                    <Route path="/blog">
+                        <News />
+                    </Route>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                </Switch>
+            </Router>
         );
     }
 }
