@@ -1,20 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import './news.css';
 import { fetchnewsdata } from '../../api/news.js';
+import Paginate from './Paginate';
+
 const News = () => {
+
+    const paraInitial = {
+        '_page': 1,
+        '_limit': 10,
+    };
+
     const [news, setNews] = useState([]);
+    const [paginate, setPaginate] = useState([]);
+    const [paras, setParas] = useState(paraInitial);
 
     useEffect(() => {
-        const fecthNews = async () => { setNews(await fetchnewsdata()) };
+        const queryString = require('query-string');
+        const string = queryString.stringify(paras);
+
+        const fecthNews = async () => {
+            const datas = await fetchnewsdata(string);
+            setNews(datas.data);
+            setPaginate(datas.pagination);
+        };
+
         fecthNews();
-    }, [setNews])
+
+    }, [setParas])
+
+    const handleClickUpdatePage = (newpage) => {
+        setParas({
+            ... { '_page': newpage }
+        });
+    }
 
     return (
         <div className="container">
-            <h1 className="text-center"> B L O G </h1>
+            <h1 className="text-center"> __B L O G __</h1>
+            <Paginate paginate={paginate} handleClickUpdatePage={handleClickUpdatePage} />
             <div className="row row-cols-1 row-cols-md-2">
-                {news.map((item, i) => (
-                    <div className="col mb-4" key={i}>
+                {news.map((item) => (
+                    <div className="col mb-4" key={item.id}>
                         <div className="card">
                             <img width="100%" src={item.imageUrl} alt={item.title} className="card-img-top" />
                             <div className="card-body">
@@ -26,25 +52,7 @@ const News = () => {
                     </div>
                 ))}
             </div>
-            <nav aria-label="Page navigation example">
-                <ul className="pagination">
-                    <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">«</span>
-                            <span className="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                    <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">»</span>
-                            <span className="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            {/* <Paginate paginate={paginate} handleClickUpdatePage={handleClickUpdatePage()} /> */}
         </div>
     );
 };

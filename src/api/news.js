@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const _url = 'http://js-post-api.herokuapp.com/api/posts?_limit=10&_page=1';
+const _url = 'http://js-post-api.herokuapp.com/api/posts?';
 
-export const fetchnewsdata = async () => {
+export const fetchnewsdata = async (string) => {
     try {
-        const {data} = await axios.get(_url);
-        return data.data;
+        const { data } = await axios.get(_url + string);
+        return data;
     } catch (error) {
         console.log(error);
     }
