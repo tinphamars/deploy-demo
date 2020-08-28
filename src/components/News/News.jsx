@@ -26,7 +26,7 @@ const News = () => {
 
         fecthNews();
 
-    }, [setParas])
+    }, [paras])
 
     const handleClickUpdatePage = (newpage) => {
         setParas({

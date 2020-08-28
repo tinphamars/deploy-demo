@@ -12,13 +12,13 @@ const Paginate = (props) => {
     return (
         <nav aria-label="Page navigation example">
             <ul className="pagination">
-                <li className="page-item " >
+                <li className={_page == 1 ? "disabled page-item" : "page-item"} >
                     <a className="page-link" href="#" aria-label="Previous" onClick={() => onClickCallNewsPage(_page - 1)}>
                         <span aria-hidden="true">«</span>
                         <span className="sr-only">Previous</span>
                     </a>
                 </li>
-                <li className="page-item">
+                <li className={_page >= countPage ? "disabled page-item" : "page-item"}>
                     <a className="page-link" href="#" aria-label="Next" onClick={() => onClickCallNewsPage(_page + 1)}>
                         <span aria-hidden="true">»</span>
                         <span className="sr-only">Next</span>
