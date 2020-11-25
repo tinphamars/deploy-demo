@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from 'reactstrap';
 import News from './components/News/News';
 import Header from './components/Static/Header';
 import {

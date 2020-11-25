@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Container, Card, CardText, Row, Col } from 'reactstrap';
 
 function Cart(props) {
     const { data: { deaths, lastUpdate, recovered, confirmed } } = props;
