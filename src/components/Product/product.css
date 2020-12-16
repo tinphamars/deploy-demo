@@ -46,3 +46,7 @@
 .product_css .tollbar a.active  {
     background-color: white;
 }
+.product_css .more-load {
+    margin: 2rem 0;
+    text-align: center;
+}

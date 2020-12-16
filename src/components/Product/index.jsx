@@ -9,18 +9,27 @@ class index extends Component {
 
     this.state = {
       datas: [],
+      limit:1,
     };
   }
 
-  fecthNews = async () => {
-    const datas = await fetchProductData();
+  fecthNews = async (abc) => {
+    const data = await fetchProductData(abc);
     this.setState({
-      datas: datas,
+      datas: this.state.datas.concat(data),
     });
   };
 
-  componentDidMount() {
-    this.fecthNews();
+  // componentDidUpdate() {
+  //   this.fecthNews(this.state.limit);
+  // }
+
+  moreLoadDemo(abc) {
+    console.log(this.state.datas)
+    this.setState({
+      limit: abc + 1
+    })
+    this.fecthNews(this.state.limit);
   }
 
   render() {
@@ -29,11 +38,11 @@ class index extends Component {
         <div className="container">
           <div className="tollbar">
             <h1>This is h1</h1>
-            <Link href="#" className="active">
+            <Link to="#" className="active">
               Success
             </Link>
-            <Link href="#">Success</Link>
-            <Link href="#">Success</Link>
+            <Link to="#">Success</Link>
+            <Link to="#">Success</Link>
           </div>
           <div className="row">
             <div className="col-md-2">
@@ -53,8 +62,17 @@ class index extends Component {
                     <blockquote className="blockquote mb-0">
                       <img width="100%" height="auto" src={item.avatar} />
                     </blockquote>
+                    <h5>{item.name}</h5>
                   </div>
                 ))}
+              </div>
+              <div className="more-load">
+                <button
+                  className="btn btn-danger"
+                  onClick={() => this.moreLoadDemo(this.state.limit)}
+                >
+                  More load
+                </button>
               </div>
             </div>
           </div>

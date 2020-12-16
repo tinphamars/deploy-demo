@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const _url = 'https://api.lioflower.com/api/product/search?order=desc&order_by=id&limit=20&page=1&category_id=';
+const _url = 'https://api.lioflower.com/api/product/search?order=desc&order_by=id&limit=1&page=';
 
-export const fetchProductData = async () => {
+export const fetchProductData = async (page) => {
     try {
-        const data = await axios.get(_url);
+        const data = await axios.get(_url + page);
         return data.data.data.item;
     } catch (error) {
         
