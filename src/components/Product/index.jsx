@@ -9,7 +9,7 @@ class index extends Component {
 
     this.state = {
       datas: [],
-      limit:1,
+      limit: 1,
     };
   }
 
@@ -25,11 +25,17 @@ class index extends Component {
   // }
 
   moreLoadDemo(abc) {
-    console.log(this.state.datas)
+    console.log(this.state.datas);
     this.setState({
-      limit: abc + 1
-    })
+      limit: abc + 1,
+    });
     this.fecthNews(this.state.limit);
+  }
+
+  ImageExist(url) {
+    var img = new Image();
+    img.src = url;
+    return img.height != 0;
   }
 
   render() {
@@ -57,21 +63,24 @@ class index extends Component {
             </div>
             <div className="col-md-10">
               <div className="card-columns">
-                {this.state.datas.map((item) => (
-                  <div className="card p-3" key={item.id}>
-                    <blockquote className="blockquote mb-0">
-                      <img width="100%" height="auto" src={item.avatar} />
-                    </blockquote>
-                    <h5>{item.name}</h5>
-                  </div>
-                ))}
+                {this.state.datas.map(
+                  (item) =>
+                    this.ImageExist(item.avatar) && (
+                      <div className="card p-3" key={item.id}>
+                        <blockquote className="blockquote mb-0">
+                          <img width="100%" height="auto" src={item.avatar} />
+                        </blockquote>
+                        <h5>{item.name}</h5>
+                      </div>
+                    )
+                )}
               </div>
               <div className="more-load">
                 <button
                   className="btn btn-danger"
                   onClick={() => this.moreLoadDemo(this.state.limit)}
                 >
-                  More load
+                  See more
                 </button>
               </div>
             </div>
