@@ -20,12 +20,8 @@ class index extends Component {
     });
   };
 
-  // componentDidUpdate() {
-  //   this.fecthNews(this.state.limit);
-  // }
 
   moreLoadDemo(abc) {
-    console.log(this.state.datas);
     this.setState({
       limit: abc + 1,
     });
@@ -38,7 +34,12 @@ class index extends Component {
     return img.height != 0;
   }
 
+  componentDidMount() {
+    this.fecthNews(this.state.limit);
+  }
+ 
   render() {
+    console.log('call render')
     return (
       <div className="product_css">
         <div className="container">
