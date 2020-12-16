@@ -6,7 +6,10 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
+
 import Home from './components/Home';
+import Product from './components/Product';
+
 
 class App extends React.Component {
 
@@ -20,6 +23,10 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/">
                         <Home />
+                    </Route>
+
+                    <Route exact path="/product">
+                        <Product />
                     </Route>
                 </Switch>
             </Router>

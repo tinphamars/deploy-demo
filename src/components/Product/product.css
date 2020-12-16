@@ -1,0 +1,48 @@
+.product_css {
+    background-color: #eef0f1;
+    padding-top: 2rem;
+}
+.product_css .list-menu_categories{
+    margin-bottom: 2rem;
+}
+.product_css .list-menu_categories a {
+    display: block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #202428;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+.product_css .list-menu_categories a:hover {
+    background-color: white;
+    font-weight: 500;
+    
+}
+.product_css .list-menu_categories a.active {
+    background-color: white;
+}
+.product_css .tollbar {
+    text-align: right;
+    margin-bottom: 2rem;
+}
+.product_css .tollbar h1 {
+    display: inline-block;
+    float: left;
+}
+
+.product_css .tollbar a {
+    margin-right: 2px;
+    color: #202428;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.product_css .tollbar a:hover {
+    margin-right: 2px;
+    color: #202428;
+    background-color: white;
+}
+.product_css .tollbar a.active  {
+    background-color: white;
+}
