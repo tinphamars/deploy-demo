@@ -62,11 +62,11 @@ class index extends Component {
               </div>
             </div>
             <div className="col-md-10">
-              <div className="card-columns">
+              <div className="card-columns row">
                 {this.state.datas.map(
                   (item) =>
                     this.ImageExist(item.avatar) && (
-                      <div className="card p-3" key={item.id}>
+                      <div className="card col-md-3" key={item.id}>
                         <blockquote className="blockquote mb-0">
                           <img width="100%" height="auto" src={item.avatar} />
                         </blockquote>
