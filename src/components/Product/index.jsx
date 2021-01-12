@@ -20,12 +20,13 @@ class index extends Component {
     });
   };
 
-
-  moreLoadDemo(abc) {
+  moreLoadDemo() {
     this.setState({
-      limit: abc + 1,
+      limit: this.state.limit + 1,
+    }, () => {
+      this.fecthNews(this.state.limit);
     });
-    this.fecthNews(this.state.limit);
+
   }
 
   ImageExist(url) {
@@ -37,9 +38,9 @@ class index extends Component {
   componentDidMount() {
     this.fecthNews(this.state.limit);
   }
- 
+
   render() {
-    console.log('call render')
+    console.log("call render");
     return (
       <div className="product_css">
         <div className="container">
@@ -67,7 +68,10 @@ class index extends Component {
                 {this.state.datas.map(
                   (item) =>
                     this.ImageExist(item.avatar) && (
-                      <div className="card col-md-3" key={item.id}>
+                      <div
+                        className="card col-md-3"
+                        key={item.id + Math.random()}
+                      >
                         <blockquote className="blockquote mb-0">
                           <img width="100%" height="auto" src={item.avatar} />
                         </blockquote>
@@ -79,7 +83,7 @@ class index extends Component {
               <div className="more-load">
                 <button
                   className="btn btn-danger"
-                  onClick={() => this.moreLoadDemo(this.state.limit)}
+                  onClick={() => this.moreLoadDemo()}
                 >
                   See more
                 </button>
