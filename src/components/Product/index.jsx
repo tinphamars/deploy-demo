@@ -10,6 +10,7 @@ class index extends Component {
     this.state = {
       datas: [],
       limit: 1,
+      Isloading: false,
     };
   }
 
@@ -20,13 +21,42 @@ class index extends Component {
     });
   };
 
-  moreLoadDemo() {
-    this.setState({
-      limit: this.state.limit + 1,
-    }, () => {
-      this.fecthNews(this.state.limit);
-    });
+  componentWillMount() {
+    this.fecthNews(this.state.limit);
+  }
 
+  displayItems() {
+    var items = [];
+    for (var i = 0; i < this.state.datas.length; i++) {
+      items.push(
+        <div className="card col-md-3" key={i + Math.random()}>
+          <blockquote className="blockquote mb-0">
+            <img
+              width="100%"
+              height="auto"
+              src="https://images.unsplash.com/photo-1516475429286-465d815a0df7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            />
+          </blockquote>
+          <h5>{this.state.datas[i]["name"]}</h5>
+        </div>
+      );
+    }
+    return items;
+  }
+
+  moreLoadDemo() {
+    this.setState({ Isloading: true });
+    setTimeout(() => {
+      this.setState(
+        {
+          limit: this.state.limit + 1,
+          Isloading: false,
+        },
+        () => {
+          this.fecthNews(this.state.limit);
+        }
+      );
+    }, 3000);
   }
 
   ImageExist(url) {
@@ -35,12 +65,7 @@ class index extends Component {
     return img.height != 0;
   }
 
-  componentDidMount() {
-    this.fecthNews(this.state.limit);
-  }
-
   render() {
-    console.log("call render");
     return (
       <div className="product_css">
         <div className="container">
@@ -64,28 +89,13 @@ class index extends Component {
               </div>
             </div>
             <div className="col-md-10">
-              <div className="card-columns row">
-                {this.state.datas.map(
-                  (item) =>
-                    this.ImageExist(item.avatar) && (
-                      <div
-                        className="card col-md-3"
-                        key={item.id + Math.random()}
-                      >
-                        <blockquote className="blockquote mb-0">
-                          <img width="100%" height="auto" src={item.avatar} />
-                        </blockquote>
-                        <h5>{item.name}</h5>
-                      </div>
-                    )
-                )}
-              </div>
+              <div className="card-columns row">{this.displayItems()}</div>
               <div className="more-load">
                 <button
                   className="btn btn-danger"
                   onClick={() => this.moreLoadDemo()}
                 >
-                  See more
+                  {this.state.Isloading ? "Loading ... " : " More Load"}
                 </button>
               </div>
             </div>
@@ -95,5 +105,4 @@ class index extends Component {
     );
   }
 }
-
 export default index;
