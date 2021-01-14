@@ -9,6 +9,7 @@ import {
 
 import Home from './components/Home';
 import Product from './components/Product';
+import Detail from './components/Product/detail/detail';
 
 
 class App extends React.Component {
@@ -27,6 +28,10 @@ class App extends React.Component {
 
                     <Route exact path="/product">
                         <Product />
+                    </Route>
+
+                    <Route exact path="/detail">
+                        <Detail />
                     </Route>
                 </Switch>
             </Router>

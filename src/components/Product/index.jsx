@@ -37,7 +37,7 @@ class index extends Component {
               src="https://images.unsplash.com/photo-1516475429286-465d815a0df7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
             />
           </blockquote>
-          <h5>{this.state.datas[i]["name"]}</h5>
+          <b>{this.state.datas[i]["name"]}</b>
         </div>
       );
     }
@@ -56,7 +56,7 @@ class index extends Component {
           this.fecthNews(this.state.limit);
         }
       );
-    }, 3000);
+    }, 1000);
   }
 
   ImageExist(url) {
@@ -92,10 +92,11 @@ class index extends Component {
               <div className="card-columns row">{this.displayItems()}</div>
               <div className="more-load">
                 <button
+                  disabled={this.state.Isloading && "disabled"}
                   className="btn btn-danger"
                   onClick={() => this.moreLoadDemo()}
                 >
-                  {this.state.Isloading ? "Loading ... " : " More Load"}
+                  {this.state.Isloading ? "Loading ..." : "More Load"}
                 </button>
               </div>
             </div>
